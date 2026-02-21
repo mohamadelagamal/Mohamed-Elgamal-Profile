@@ -26,7 +26,7 @@ const projects: Project[] = [
       "All-in-one Islamic app to maintain daily Adhkar (morning & evening remembrances), read the complete Holy Quran with a clear font, and get accurate prayer times — all in one place.",
     category: ["Android", "Mobile"],
     image: zikrImg,
-    tech: ["Flutter", "Dart", "Local Notifications", "REST API"],
+    tech: ["Kotlin", "Jetpack Compose", "Room", "MVVM"],
     type: "Android",
     link: "https://play.google.com/store/apps/details?id=com.elmaref.elgamal",
   },
