@@ -4,7 +4,6 @@ import { motion } from "motion/react";
 import { useInView } from "./hooks/useInView";
 import { Mail, MapPin, Phone, Linkedin, Github, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import emailjs from "@emailjs/browser";
 
 type FormData = {
   name: string;
@@ -56,28 +55,16 @@ export function Contact() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = (data: FormData) => {
     setIsSubmitting(true);
-    try {
-      await emailjs.send(
-        "service_e24iyhl",
-        "template_vxuvvob",
-        {
-          from_name: data.name,
-          from_email: data.email,
-          subject: data.subject,
-          message: data.message,
-        },
-        { publicKey: "z2Oje-Hj8glvLi-ND" }
-      );
-      toast.success("Message sent! I'll get back to you soon.");
-      reset();
-    } catch (err) {
-      console.error("EmailJS error:", err);
-      toast.error("Failed to send message. Please try again.");
-    } finally {
+    const body = `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`;
+    const mailtoUrl = `mailto:mohamad.elgamal.tech@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, "_blank");
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      reset();
+      toast.success("Email client opened! Your message is ready to send.");
+    }, 600);
   };
 
   return (
@@ -251,7 +238,7 @@ export function Contact() {
               {isSubmitting ? (
                 <>
                   <Loader2 size={17} className="animate-spin" />
-                  Sending…
+                  Opening email client…
                 </>
               ) : (
                 <>
