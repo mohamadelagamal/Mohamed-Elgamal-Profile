@@ -39,7 +39,7 @@ function ProfileImage() {
           <div className="w-full h-full rounded-full p-[2px] bg-background">
             <div className="w-full h-full rounded-full overflow-hidden">
               <img
-                src="/profile.jpg"
+                src={`${import.meta.env.BASE_URL}profile.jpg`}
                 alt="Mohamad Elgamal"
                 className="w-full h-full object-cover object-top"
               />
@@ -74,7 +74,7 @@ function ProfileImage() {
       <div className="hidden lg:block relative p-[2px] rounded-2xl bg-gradient-to-b from-primary/60 via-primary/20 to-transparent">
         <div className="relative rounded-2xl overflow-hidden w-[310px]">
           <img
-            src="/profile.jpg"
+            src={`${import.meta.env.BASE_URL}profile.jpg`}
             alt="Mohamad Elgamal"
             className="w-full h-auto object-cover block"
             style={{ aspectRatio: "4/5" }}
