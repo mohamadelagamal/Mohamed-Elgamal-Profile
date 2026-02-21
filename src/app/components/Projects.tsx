@@ -21,7 +21,7 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    name: "ذكر — Dhikr",
+    name: "ذكر — Zikr",
     description:
       "All-in-one Islamic app to maintain daily Adhkar (morning & evening remembrances), read the complete Holy Quran with a clear font, and get accurate prayer times — all in one place.",
     category: ["Android", "Mobile"],
