@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { useInView } from "./hooks/useInView";
 import { ArrowUpRight } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import zikrImg from "@/assets/zikr.png";
 
 type Category = "All" | "Mobile" | "Full Stack" | "Android";
 
@@ -20,6 +21,17 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    name: "ذكر — Dhikr",
+    description:
+      "All-in-one Islamic app to maintain daily Adhkar (morning & evening remembrances), read the complete Holy Quran with a clear font, and get accurate prayer times — all in one place.",
+    category: ["Android", "Mobile"],
+    image: zikrImg,
+    tech: ["Flutter", "Dart", "Local Notifications", "REST API"],
+    type: "Android",
+    link: "https://play.google.com/store/apps/details?id=com.elmaref.elgamal",
+  },
+  {
+    id: 2,
     name: "Refine",
     description:
       "Healthcare Discounts App with payment integration and real-time updates. Enables users to access exclusive healthcare deals seamlessly.",
@@ -30,7 +42,7 @@ const projects: Project[] = [
     type: "Mobile",
   },
   {
-    id: 2,
+    id: 3,
     name: "Dr Recruiter",
     description:
       "Medical Job Platform connecting healthcare professionals with top opportunities. Full-stack solution with smart matching and real-time notifications.",
@@ -41,7 +53,7 @@ const projects: Project[] = [
     type: "Full Stack",
   },
   {
-    id: 3,
+    id: 4,
     name: "Live Jobs",
     description:
       "Live Interview System with real-time video and chat functionality built with WebRTC. Streamlines the remote hiring process end-to-end.",
@@ -52,7 +64,7 @@ const projects: Project[] = [
     type: "Full Stack",
   },
   {
-    id: 4,
+    id: 5,
     name: "eBroker",
     description:
       "Property Marketplace with advanced search, interactive Google Maps integration, and smart filtering. Simplified real estate discovery for buyers and renters.",
@@ -63,7 +75,7 @@ const projects: Project[] = [
     type: "Mobile",
   },
   {
-    id: 5,
+    id: 6,
     name: "SaaS Staff Teacher",
     description:
       "Classroom SaaS platform for educational institutions with multi-tenant architecture, course management, and progress analytics.",
@@ -72,17 +84,6 @@ const projects: Project[] = [
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1080&q=80",
     tech: ["Flutter", "Node.js", "PostgreSQL", "GraphQL"],
     type: "Full Stack",
-  },
-  {
-    id: 6,
-    name: "Elmaref Quran",
-    description:
-      "Native Android App for Quran reading and memorization with offline support, audio recitation, and bookmarking built with Jetpack Compose.",
-    category: ["Android", "Mobile"],
-    image:
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1080&q=80",
-    tech: ["Kotlin", "Jetpack Compose", "Room", "MVVM"],
-    type: "Android",
   },
 ];
 
@@ -155,7 +156,8 @@ export function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="group relative rounded-2xl border border-border bg-surface overflow-hidden hover:border-foreground/15 transition-all duration-300"
+                className="group relative rounded-2xl border border-border bg-surface overflow-hidden hover:border-foreground/15 transition-all duration-300 cursor-pointer"
+                onClick={() => project.link && window.open(project.link, "_blank")}
               >
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-[16/10]">
