@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(git -C \"C:\\\\Users\\\\HP\\\\Desktop\\\\Personal Portfolio Website\" remote -v)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(\"C:\\\\Users\\\\HP\\\\Desktop\\\\Personal Portfolio:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
