@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { useInView } from "./hooks/useInView";
 import { Mail, MapPin, Phone, Linkedin, Github, Send, Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 type FormData = {
   name: string;
@@ -16,8 +17,8 @@ const infoCards = [
   {
     icon: Mail,
     label: "Email",
-    value: "mohamad.elgamal.tech@gmail.com",
-    href: "mailto:mohamad.elgamal.tech@gmail.com",
+    value: "mohamadelgamal.egypt@gmail.com",
+    href: "mailto:mohamadelgamal.egypt@gmail.com",
   },
   {
     icon: Phone,
@@ -55,16 +56,29 @@ export function Contact() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    const body = `Name: ${data.name}\nEmail: ${data.email}\n\n${data.message}`;
-    const mailtoUrl = `mailto:mohamad.elgamal.tech@gmail.com?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoUrl, "_blank");
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      await emailjs.send(
+        "service_e24iyhl",
+        "template_vxuvvob",
+        {
+          from_name: data.name,
+          from_email: data.email,
+          subject: data.subject,
+          message: data.message,
+          to_email: "mohamadelgamal.egypt@gmail.com",
+        },
+        { publicKey: "z2Oje-Hj8glvLi-ND" }
+      );
+      toast.success("Message sent! I'll get back to you soon.");
       reset();
-      toast.success("Email client opened! Your message is ready to send.");
-    }, 600);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -238,7 +252,7 @@ export function Contact() {
               {isSubmitting ? (
                 <>
                   <Loader2 size={17} className="animate-spin" />
-                  Opening email client…
+                  Sending…
                 </>
               ) : (
                 <>
