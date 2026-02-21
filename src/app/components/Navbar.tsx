@@ -51,7 +51,7 @@ export function Navbar({ isDark, toggleTheme }: NavbarProps) {
             }}
             className="font-['Space_Grotesk'] text-[1.25rem] tracking-tight text-foreground"
           >
-            Elgamal<span className="text-primary">.</span>
+            Mohamed <span className="text-primary">Elgamal</span>
           </a>
 
           {/* Desktop Nav */}
